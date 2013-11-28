@@ -4,7 +4,7 @@ describe('PlayerView', function() {
   beforeEach(function() {
     jasmine.Clock.useMock();
 
-    library = new Songs([
+    library = new MyTunes.Collections.Songs([
       {
         url: "mp3s/08 4 Page Letter.mp3",
         title: "4 Page Letter",
@@ -18,7 +18,7 @@ describe('PlayerView', function() {
     ]);
     // playerView is created in AppView initialize
     // access with appView.playerView
-    appView = new AppView({model: new App({library: library})});
+    appView = new MyTunes.Views.AppView({model: new MyTunes.Models.AppModel({library: library})});
   });
 
   it('gets its model property set to any song that is played', function(){

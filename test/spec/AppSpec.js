@@ -2,7 +2,7 @@ describe('App', function() {
   var app, fakeSongs;
 
   beforeEach(function() {
-    fakeSongs = new Songs([
+    fakeSongs = new MyTunes.Collections.Songs([
       {
         artist: 'data',
         url: '/test/testsong.mp3',
@@ -14,11 +14,11 @@ describe('App', function() {
         title:'test song 2'
       }
     ]);
-    app = new App({library: fakeSongs});
+    app = new MyTunes.Models.AppModel({library: fakeSongs});
   });
 
   it('creates a song queue on initialize', function(){
-    expect(app.get('songQueue') instanceof SongQueue).toBeTruthy();
+    expect(app.get('songQueue') instanceof MyTunes.Collections.SongQueue).toBeTruthy();
   });
 
   it('sets the current song when a "play" event is fired', function(){

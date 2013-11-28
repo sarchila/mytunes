@@ -1,8 +1,8 @@
-describe('Song', function() {
+describe('SongModel', function() {
   var model;
 
   beforeEach(function() {
-    model = new Song({
+    model = new MyTunes.Models.SongModel({
       artist: 'data',
       url: '/test/testsong.mp3',
       title:'test song'

@@ -2,8 +2,8 @@ describe('AppView', function() {
   var appView, app;
 
   beforeEach(function () {
-    app = new App({library:
-      new Songs([
+    app = new MyTunes.Models.AppModel({library:
+      new MyTunes.Collections.Songs([
         {
           artist: 'Fakey McFakerson',
           title: 'Never Gonna Mock You Up',
@@ -16,11 +16,11 @@ describe('AppView', function() {
         }
       ])
     });
-    appView = new AppView({model: app});
+    appView = new MyTunes.Views.AppView({model: app});
   });
 
   it('should generate a PlayerView when created', function(){
-    expect(appView.playerView).toEqual(jasmine.any(PlayerView));
+    expect(appView.playerView).toEqual(jasmine.any(MyTunes.Views.PlayerView));
   });
   describe('when the currently playing song changes', function() {
     it('updates current song in playerView', function(){

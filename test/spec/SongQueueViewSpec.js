@@ -2,7 +2,7 @@ describe('SongQueueView', function() {
   var view, fakeSongs;
 
   beforeEach(function() {
-    fakeSongs = new SongQueue([
+    fakeSongs = new MyTunes.Collections.SongQueue([
       {
         artist: 'data',
         url: '/test/testsong.mp3',
@@ -17,15 +17,15 @@ describe('SongQueueView', function() {
   });
 
   xit('creates SongQueueEntryViews for each queued song & renders them', function(){
-    spyOn(SongQueueEntryView.prototype, 'render').andCallThrough();
-    view = new SongQueueView({collection: fakeSongs});
+    spyOn(MyTunes.Views.SongQueueEntryView.prototype, 'render').andCallThrough();
+    view = new MyTunes.Views.SongQueueView({collection: fakeSongs});
     view.render();
     expect(SongQueueEntryView.prototype.render).toHaveBeenCalled();
   });
 
   xit('renders when add or remove event fires from the song queue collection', function(){
-    spyOn(SongQueueView.prototype, 'render').andCallThrough();
-    view = new SongQueueView({collection: fakeSongs});
+    spyOn(MyTunes.Views.SongQueueView.prototype, 'render').andCallThrough();
+    view = new MyTunes.Views.SongQueueView({collection: fakeSongs});
     view.collection.add({
       artist: 'data',
       url: '/test/testsong3.mp3',

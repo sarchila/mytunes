@@ -14,22 +14,19 @@ describe("LibraryView", function() {
         url: 'fake/url'
       }
     ];
-    fakeSongs = new Backbone.Collection(fakeSongData);
-
-    fakeSubview = { render: jasmine.createSpy() };
-    spyOn(window, 'LibraryEntryView').andReturn(fakeSubview);
-
-    view = new LibraryView({collection: fakeSongs});
+    fakeSongs = new MyTunes.Collections.Songs(fakeSongData);
   });
 
   it("should render its subviews when you render it", function(){
-    view.render();
+    fakeSubview = { render: jasmine.createSpy() };
+    spyOn(MyTunes.Views, 'LibraryEntryView').andReturn(fakeSubview);
+    view = new MyTunes.Views.LibraryView({collection: fakeSongs});
     expect(fakeSubview.render.callCount).toEqual(fakeSongData.length);
   });
 
   it("should have a header element after being rendered", function(){
-    expect(view.$el.children().length).toBe(0);
-    view.render();
+    view = new MyTunes.Views.LibraryView({collection: fakeSongs});
+    expect(view.$el.children().length).toBe(2);
     expect(view.$el.children()[0].tagName).toBe('TH');
   });
 });

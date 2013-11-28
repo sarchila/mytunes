@@ -2,7 +2,7 @@ describe('SongQueue', function() {
   var playSpy, songData1, songData2;
 
   beforeEach(function() {
-    playSpy = spyOn(SongQueue.prototype, 'playFirst').andCallThrough();
+    playSpy = spyOn(MyTunes.Collections.SongQueue.prototype, 'playFirst').andCallThrough();
     songData1 = {
       artist: 'data',
       url: '/test/testsong.mp3',
@@ -22,7 +22,7 @@ describe('SongQueue', function() {
   describe('when a song is added', function() {
     describe('when it is the only song in the song queue', function() {
       xit('plays it', function() {
-        var songQueue = new SongQueue();
+        var songQueue = new MyTunes.Collections.SongQueue();
         songQueue.add(songData1);
         expect(playSpy).toHaveBeenCalled();
       });
@@ -30,7 +30,7 @@ describe('SongQueue', function() {
 
     describe('when it is not the only song in the song queue', function() {
       xit('does nothing', function() {
-        var songQueue = new SongQueue(songData1);
+        var songQueue = new MyTunes.Collections.SongQueue(songData1);
         songQueue.add(songData2);
         expect(playSpy).not.toHaveBeenCalled();
       });
@@ -39,7 +39,7 @@ describe('SongQueue', function() {
 
   describe('when a song ends', function() {
     xit('removes the song from the queue', function() {
-      var songQueue = new SongQueue([songData1, songData2]);
+      var songQueue = new MyTunes.Collections.SongQueue([songData1, songData2]);
       song2 = songQueue.at(1);
       expect(songQueue.length).toEqual(2);
       songQueue.at(0).trigger('ended');
@@ -49,7 +49,7 @@ describe('SongQueue', function() {
 
     describe('if there are any songs left in the queue', function() {
       xit('plays the first song in the queue', function() {
-        var songQueue = new SongQueue([songData1, songData2]);
+        var songQueue = new MyTunes.Collections.SongQueue([songData1, songData2]);
         songQueue.at(0).ended();
         expect(playSpy).toHaveBeenCalled();
       });
@@ -57,7 +57,7 @@ describe('SongQueue', function() {
 
     describe('if there are no songs left in the queue', function() {
       xit('does nothing', function() {
-        var songQueue = new SongQueue(songData1);
+        var songQueue = new MyTunes.Collections.SongQueue(songData1);
         songQueue.at(0).ended();
         expect(playSpy).not.toHaveBeenCalled();
       });
@@ -66,8 +66,8 @@ describe('SongQueue', function() {
 
   describe('when a song is dequeued', function() {
     xit('removes the song', function() {
-      removeSpy = spyOn(SongQueue.prototype, 'remove').andCallThrough();
-      var songQueue = new SongQueue(songData1);
+      removeSpy = spyOn(MyTunes.Collections.SongQueue.prototype, 'remove').andCallThrough();
+      var songQueue = new MyTunes.Collections.SongQueue(songData1);
       songQueue.at(0).dequeue();
       expect(removeSpy).toHaveBeenCalled();
     });
@@ -75,8 +75,8 @@ describe('SongQueue', function() {
 
   describe('playFirst', function() {
     xit('plays the first song in the queue', function() {
-      spyOn(Song.prototype, 'play').andCallThrough();
-      var songQueue = new SongQueue(songData1);
+      spyOn(MyTunes.Models.SongModel.prototype, 'play').andCallThrough();
+      var songQueue = new MyTunes.Collections.SongQueue(songData1);
       songQueue.playFirst();
       expect(songQueue.at(0).play).toHaveBeenCalled();
     });
