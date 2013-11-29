@@ -20,6 +20,9 @@ MyTunes.Models.AppModel = Backbone.Model.extend({
     params.library.on('enqueue', function(song){
       this.get('songQueue').add(song);
     }, this);
+    params.library.on('ended', function(){
+      this.set('currentSong', this.get('songQueue').shift());
+    }, this);
   }
 
 });
