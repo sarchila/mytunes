@@ -10,5 +10,9 @@ MyTunes.Models.SongModel = Backbone.Model.extend({
   },
   enqueue: function(){
     this.trigger('enqueue', this);
+  },
+  ended: function(){
+    console.log('song ended event');
+    this.trigger('ended', this);
   }
 });
