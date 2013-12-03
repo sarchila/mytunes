@@ -17,10 +17,7 @@ MyTunes.Views.PlayerView = Backbone.View.extend({
   },
 
   render: function(){
-    var that = this;
-    this.$el.on('ended', function(){
-      that.model.ended();
-    });
+    this.$el.on('ended', this.model.ended.bind(this.model));
     return this.$el.attr('src', this.model.get('url'));
   }
 

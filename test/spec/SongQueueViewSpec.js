@@ -35,4 +35,11 @@ describe('SongQueueView', function() {
     expect(view.render.callCount).toEqual(2);
   });
 
+  it('removes the song from the queue when clicked', function() {
+    view = new MyTunes.Views.SongQueueView({collection: fakeSongs});
+    view.render();
+    view.$el.find('tr').first().click();
+    expect(view.collection.length).toEqual(1);
+  });
+
 });

@@ -82,4 +82,5 @@ describe('SongQueue', function() {
       expect(songQueue.at(0).play).toHaveBeenCalled();
     });
   });
+
 });
