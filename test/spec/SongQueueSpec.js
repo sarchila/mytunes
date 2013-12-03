@@ -3,6 +3,7 @@ describe('SongQueue', function() {
 
   beforeEach(function() {
     playSpy = spyOn(MyTunes.Collections.SongQueue.prototype, 'playFirst').andCallThrough();
+    // debugger;
     songData1 = {
       artist: 'data',
       url: '/test/testsong.mp3',
@@ -81,4 +82,5 @@ describe('SongQueue', function() {
       expect(songQueue.at(0).play).toHaveBeenCalled();
     });
   });
+
 });
