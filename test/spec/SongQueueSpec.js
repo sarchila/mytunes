@@ -81,4 +81,13 @@ describe('SongQueue', function() {
       expect(songQueue.at(0).play).toHaveBeenCalled();
     });
   });
+
+  xdescribe('songQueueView', function() {
+    it('plays the first song in the queue', function() {
+      spyOn(MyTunes.Models.SongModel.prototype, 'play').andCallThrough();
+      var songQueue = new MyTunes.Collections.SongQueue(songData1);
+      songQueue.playFirst();
+      expect(songQueue.at(0).play).toHaveBeenCalled();
+    });
+  });
 });
