@@ -17,6 +17,10 @@ MyTunes.Models.SongModel = Backbone.Model.extend({
   dequeue: function(){
     // Triggering an event here will also trigger the event on the collection
     this.trigger('dequeue', this);
+  },
+
+  ended: function(){
+    this.trigger('ended', this);
   }
 
 });
